@@ -1,41 +1,44 @@
 # WRF-ELM
-The Weather Research & Forecasting Model (WRF) coupled with Energy Exascale Earth System Model (E3SM) Land Model
+## The Weather Research & Forecasting Model (WRF) coupled with Energy Exascale Earth System Model (E3SM) Land Model
 ================================================================================
 
 ## Configuring to compile ELM
 ================================================================================
 
-To compile ELM with MPI, You will need to install PIO and ESMF using the following steps.
+To compile ELM with MPI, You will need to install ParallelIO(PIO) and ESMF using the following steps.
 
-### Compile ParallelIO (PIO) library 
+### 1. Compile ParallelIO (PIO) library 
 
-   Download the archive for version 2.5.9 from NCAR (https://github.com/NCAR/ParallelIO/releases)
+   1) Download the latest version from NCAR (https://github.com/NCAR/ParallelIO/releases)
    
-   Unzip it
+   2) Unzip it
    
-   Copy this `pio-build-perlmutter.sh` script to the parent directory of the unzipped code
+   3) Copy this `pio-build-perlmutter.sh` script to the parent directory of the unzipped code
    
-   Update the file paths in pio-build-perlmutter.sh
+   4) Update the file paths of unzipped code in pio-build-perlmutter.sh
    
-   Run this `pio-build-perlmutter.sh` scrip (the -S should point to where the code is, and the -B should point to where you want it to build
+   5) Run this `pio-build-perlmutter.sh` scrip (the -S should point to where the code is, and the -B should point to where you want it to build)
    
-   After it builds successfully, you’ll need to change directory to the build folder and run `make` and then `make install`
+   6) After it builds successfully, change directory to the build folder and run `make` and then `make install`
  
 ### Compile ESMF:
-Download the archive for version 8.4.2 from here
-Unzip it
-Copy this `esmf-build-perlmutter.sh` to inside the unzipped directory
-Update the file paths
-Run the `esmf-build-perlmutter.sh` with the last line saying “make”
-Run it again but with the last line saying “make install”
+   1) Download the archive for version 8.4.2 from https://github.com/esmf-org/esmf/releases/tag/v8.4.2
+      
+   2) Unzip it
+      
+   3) Copy this `esmf-build-perlmutter.sh` to inside the unzipped directory
+
+   4) Update the file paths in esmf-build-perlmutter.sh
+
+   5) Run the `esmf-build-perlmutter.sh` with the last line saying “make”
+
+   6) Run it again but with the last line saying “make install”
  
-### make ESMF accessible as a module:
-Copy this `esmf-perlmutter-modulefile` into a directory named `esmf`
-Update the name of this file to `perlmutter-8.4.2`
-Update the paths in the file to point to where you installed PIO and ESMF
+   7) make ESMF accessible as a module:
+      7.1) Copy this `esmf-perlmutter-modulefile` into a directory named `esmf`
+      7.2) Update the name of this file to `perlmutter-8.4.2`
+      7.3) Update the paths in the file to point to where you installed PIO and ESMF
 
-
-For questions about the model, use [Github Discussions](https://github.com/E3SM-Project/E3SM/discussions)
 
 Table of Contents 
 --------------------------------------------------------------------------------

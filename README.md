@@ -10,10 +10,15 @@ To compile ELM with MPI, You will need to install PIO and ESMF using the followi
 ### Compile ParallelIO (PIO) library 
 
    Download the archive for version 2.5.9 from NCAR (https://github.com/NCAR/ParallelIO/releases)
+   
    Unzip it
+   
    Copy this `pio-build-perlmutter.sh` script to the parent directory of the unzipped code
-   Update the file paths in 
+   
+   Update the file paths in pio-build-perlmutter.sh
+   
    Run this `pio-build-perlmutter.sh` scrip (the -S should point to where the code is, and the -B should point to where you want it to build
+   
    After it builds successfully, you’ll need to change directory to the build folder and run `make` and then `make install`
  
 ### Compile ESMF:

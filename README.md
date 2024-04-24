@@ -8,12 +8,14 @@ The Weather Research & Forecasting Model (WRF) coupled with Energy Exascale Eart
 To compile ELM with MPI, You will need to install PIO and ESMF using the following steps.
 
 ### Compile ParallelIO (PIO) library 
-Download the archive for version 2.5.9 from here
-Unzip it
-Copy this `pio-build-perlmutter.sh` script to the parent directory of the unzipped code
-Update the file paths
-Run this `pio-build-perlmutter.sh` scrip (the -S should point to where the code is, and the -B should point to where you want it to build
-After it builds successfully, you’ll need to change directory to the build folder and run `make` and then `make install`
+   ```
+   Download the archive for version 2.5.9 from here
+   Unzip it
+   Copy this `pio-build-perlmutter.sh` script to the parent directory of the unzipped code
+   Update the file paths
+   Run this `pio-build-perlmutter.sh` scrip (the -S should point to where the code is, and the -B should point to where you want it to build
+   After it builds successfully, you’ll need to change directory to the build folder and run `make` and then `make install`
+   ```
  
 ### Compile ESMF:
 Download the archive for version 8.4.2 from here

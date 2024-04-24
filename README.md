@@ -52,7 +52,9 @@
 
 ## 3. Build ELM and its dependencies
 ### In your ELM directory, build ELM and its dependencies. Currently we only support build WRF-ELM on Perlmutter with gnu
+```
     ./lilac/build_ctsm /PATH/TO/ELM/BUILD --machine perlmutter --compiler gnu
+```
 
 ## 4. Building WRF with ELM
 ### Load the same modules and set the same environments as used for ELM build by sourcing elm_build_environment.sh for Bash:

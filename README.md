@@ -1,13 +1,13 @@
 # WRF-ELM
-## The Weather Research & Forecasting Model (WRF) coupled with Energy Exascale Earth System Model (E3SM) Land Model
+### The Weather Research & Forecasting Model (WRF) coupled with Energy Exascale Earth System Model (E3SM) Land Model
 ================================================================================
 
 ## Configuring to compile ELM
-================================================================================
+--------------------------------------------------------------------------------
 
-To compile ELM with MPI, You will need to install ParallelIO(PIO) and ESMF using the following steps.
+1. To compile ELM with MPI, You will need to install ParallelIO(PIO) and ESMF using the following steps.
 
-### 1. Compile ParallelIO (PIO) library 
+### Compile ParallelIO (PIO) library 
 
    1) Download the latest version from NCAR (https://github.com/NCAR/ParallelIO/releases)
    
@@ -39,15 +39,23 @@ To compile ELM with MPI, You will need to install ParallelIO(PIO) and ESMF using
       7.2) Update the name of this file to `perlmutter-8.4.2`
       7.3) Update the paths in the file to point to where you installed PIO and ESMF
 
+2. Compile ELM with WRF
+### Clone the WRF repository and checkout develop branch:
+```
+   git clone https://github.com/wrf-model/WRF.git WRF-ELM
+   cd WRF-ELM
+   git checkout develop
+```
 
-Table of Contents 
+### Clone the ELM repository:
+```
+   git clone https://github.com/hhllbao93/E3SM.git ELM
+   cd ELM
+   ./manage_externals/checkout_externals 
+```
+### In your ELM directory, build ELM and its dependencies. Currently we only support build WRF-ELM on Perlmutter with gnu
+    ./lilac/build_ctsm /PATH/TO/ELM/BUILD --machine perlmutter --compiler gnu
 --------------------------------------------------------------------------------
-- [Quick Start](#quickstart)
-- [Supported Machines](#supportedmachines)
-- [Running](#running)
-- [Contributing](#contributing)
-- [Acknowledge](#acknowledge)
-- [License](#license)
 
 Quick Start
 --------------------------------------------------------------------------------

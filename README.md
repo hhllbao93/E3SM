@@ -38,16 +38,16 @@
 ## 2. Clone ELM and WRF code 
 ### Clone the WRF repository and checkout develop branch:
 ```
-   git clone https://github.com/wrf-model/WRF.git WRF-ELM
-   cd WRF-ELM
-   git checkout develop
+    git clone https://github.com/wrf-model/WRF.git WRF-ELM
+    cd WRF-ELM
+    git checkout develop
 ```
 
 ### Clone the ELM repository:
 ```
-   git clone https://github.com/hhllbao93/E3SM.git ELM
-   cd ELM
-   ./manage_externals/checkout_externals 
+    git clone https://github.com/hhllbao93/E3SM.git ELM
+    cd ELM
+    ./manage_externals/checkout_externals 
 ```
 
 ## 3. Build ELM and its dependencies
@@ -61,7 +61,7 @@
 ```
 ### Set makefile variables from ELM needed for the WRF build by setting the following environment. For example for Bash
 ```
-export WRF_ELM_MKFILE=/glade/scratch/$USER/WRF-ELM/ELM/elm_build_dir/bld/elm.mk
+    export WRF_ELM_MKFILE=/glade/scratch/$USER/WRF-ELM/ELM/elm_build_dir/bld/elm.mk
 ```
 ### Compile the code using build_WRF.sh
 ```

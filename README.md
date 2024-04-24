@@ -1,18 +1,32 @@
-[![E3SM Logo](https://e3sm.org/wp-content/themes/e3sm/assets/images/e3sm-logo.png)](https://e3sm.org)
+# WRF-ELM
+The Weather Research & Forecasting Model (WRF) coupled with Energy Exascale Earth System Model (E3SM) Land Model
 
-Energy Exascale Earth System Model (E3SM)
+## Configuring to compile ELM
 ================================================================================
 
-E3SM is a state-of-the-art fully coupled model of the Earth's climate including
-important biogeochemical and cryospheric processes. It is intended to address
-the most challenging and demanding climate-change research problems and
-Department of Energy mission needs while efficiently using DOE Leadership
-Computing Facilities.  
+To compile ELM with MPI, You will need to install PIO and ESMF using the following steps.
 
-DOI: [10.11578/E3SM/dc.20230110.5](http://dx.doi.org/10.11578/E3SM/dc.20230110.5)
+### Compile ParallelIO (PIO) library 
+Download the archive for version 2.5.9 from here
+Unzip it
+Copy this `pio-build-perlmutter.sh` script to the parent directory of the unzipped code
+Update the file paths
+Run this `pio-build-perlmutter.sh` scrip (the -S should point to where the code is, and the -B should point to where you want it to build
+After it builds successfully, you’ll need to change directory to the build folder and run `make` and then `make install`
+ 
+### Compile ESMF:
+Download the archive for version 8.4.2 from here
+Unzip it
+Copy this `esmf-build-perlmutter.sh` to inside the unzipped directory
+Update the file paths
+Run the `esmf-build-perlmutter.sh` with the last line saying “make”
+Run it again but with the last line saying “make install”
+ 
+### make ESMF accessible as a module:
+Copy this `esmf-perlmutter-modulefile` into a directory named `esmf`
+Update the name of this file to `perlmutter-8.4.2`
+Update the paths in the file to point to where you installed PIO and ESMF
 
-Please visit the [project website](https://e3sm.org) or our [Confluence site](https://acme-climate.atlassian.net/wiki/spaces/DOC/overview)
-for further details.
 
 For questions about the model, use [Github Discussions](https://github.com/E3SM-Project/E3SM/discussions)
 

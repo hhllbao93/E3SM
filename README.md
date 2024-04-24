@@ -1,11 +1,7 @@
-# WRF-ELM
-### The Weather Research & Forecasting Model (WRF) coupled with Energy Exascale Earth System Model (E3SM) Land Model
+# The Weather Research & Forecasting Model (WRF) coupled with Energy Exascale Earth System Model (E3SM) Land Model (WRF-ELM)
 ================================================================================
 
-## Configuring to compile ELM
---------------------------------------------------------------------------------
-
-1. To compile ELM with MPI, You will need to install ParallelIO(PIO) and ESMF using the following steps.
+## 1. To compile ELM with MPI, ParallelIO(PIO) and ESMF is needed
 
 ### Compile ParallelIO (PIO) library 
 
@@ -39,7 +35,7 @@
       7.2) Update the name of this file to `perlmutter-8.4.2`
       7.3) Update the paths in the file to point to where you installed PIO and ESMF
 
-2. Compile ELM with WRF
+## 2. Clone ELM and WRF code 
 ### Clone the WRF repository and checkout develop branch:
 ```
    git clone https://github.com/wrf-model/WRF.git WRF-ELM
@@ -53,59 +49,21 @@
    cd ELM
    ./manage_externals/checkout_externals 
 ```
+
+## 3. Build ELM and its dependencies
 ### In your ELM directory, build ELM and its dependencies. Currently we only support build WRF-ELM on Perlmutter with gnu
     ./lilac/build_ctsm /PATH/TO/ELM/BUILD --machine perlmutter --compiler gnu
---------------------------------------------------------------------------------
 
-Quick Start
---------------------------------------------------------------------------------
-The [Quick Start](https://e3sm.org/model/running-e3sm/e3sm-quick-start/) page 
-includes instructions on obtaining the necessary code and input data for model 
-setup and execution on a supported machine.
-
-Supported Machines 
---------------------------------------------------------------------------------
-E3SM is a high-performance computing application and generally requires a
-capable compute cluster to run a scientifically validated case at a useful
-simulation speed.
-
-To run E3SM, it is recommended that you obtain time on a 
-[Supported Machine](https://e3sm.org/model/running-e3sm/supported-machines/).
-
-Running
---------------------------------------------------------------------------------
-Please refer to [Running E3SM](https://e3sm.org/model/running-e3sm/) 
- for instructions on running the model. 
-
-Contributing
---------------------------------------------------------------------------------
-Please refer to [Contributing](CONTRIBUTING.md) for details on our code development
-process.
-
-Acknowledgement
---------------------------------------------------------------------------------
-The Energy Exascale Earth System Model (E3SM) Project should be acknowledged in
-publications as the origin of the model using
-[these guidelines](https://e3sm.org/resources/policies/acknowledge-e3sm/).
-
-In addition, the software should be cited.  For your convenience,
-the following BibTeX entry is provided.
-```TeX
-@misc{e3sm-model,
-	title = {{Energy Exascale Earth System Model (E3SM)}},
-	author = {{E3SM Project}},
-	abstractNote = {{E3SM} is a state-of-the-art fully coupled model of the {E}arth's 
-		climate including important biogeochemical and cryospheric processes.},
-	howpublished = {[Computer Software] \url{https://dx.doi.org/10.11578/E3SM/dc.20230110.5}},
-	url = {https://dx.doi.org/10.11578/E3SM/dc.20230110.5},
-	doi = {10.11578/E3SM/dc.20230110.5},
-	year = 2023,
-	month = jan,
-}
+## 4. Building WRF with ELM
+### Load the same modules and set the same environments as used for ELM build by sourcing elm_build_environment.sh for Bash:
 ```
-
-License
---------------------------------------------------------------------------------
-The E3SM model is available under a BSD 3-clause license.
-Please see [LICENSE](LICENSE) for details.
-
+    source elm_build_dir/elm_build_environment.sh
+```
+### Set makefile variables from ELM needed for the WRF build by setting the following environment. For example for Bash
+```
+export WRF_ELM_MKFILE=/glade/scratch/$USER/WRF-ELM/ELM/elm_build_dir/bld/elm.mk
+```
+### Compile the code using build_WRF.sh
+```
+    sh build_WRF.sh
+```
